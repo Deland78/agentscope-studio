@@ -32,9 +32,8 @@ def get_formatter(llmProvider: str) -> FormatterBase:
         case "anthropic":
             return AnthropicChatFormatter()
         case _:
-            raise ValueError(
-                f"Unsupported model provider: {llmProvider}. "
-            )
+            # Default to OpenAI formatter for Emergent integration
+            return OpenAIChatFormatter()
 
 def get_model(llmProvider:str, modelName: str, apiKey: str) -> ChatModelBase:
     """Get the model instance based on the input arguments."""
