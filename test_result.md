@@ -297,3 +297,39 @@ Studio [Header] ✅
 **Last Updated:** September 13, 2025  
 **Environment:** Kubernetes Container with Node.js 18+ and Python 3.11+  
 **Status:** ✅ FULLY TESTED AND VALIDATED FOR PRODUCTION USE
+
+## Final Working Configuration
+
+### Production Setup (WORKING IN EMERGENT PREVIEW)
+**Date:** September 13, 2025  
+**Configuration:** Production mode serving on port 3000  
+**Status:** ✅ CONFIRMED WORKING IN EMERGENT PREVIEW
+
+**Final Working Command:**
+```bash
+cd /app && npm run build && NODE_ENV=production node dist/server/src/index.js
+```
+
+**Key Configuration Changes Made:**
+1. **Port Consolidation**: Moved from development ports (5173/3001) to production port 3000
+2. **Production Build**: Built frontend assets and served through Express server
+3. **Static File Serving**: Configured Express to serve built React app from `/dist/public`
+4. **Emergent Preview Compatibility**: Aligned with Emergent's expected port configuration
+
+**Services:**
+- **Application**: http://localhost:3000 (Express serving React + APIs)
+- **Database**: SQLite at `/root/AgentScope-Studio/database.sqlite`
+- **Mode**: Production (NODE_ENV=production)
+
+**User Confirmation:**
+✅ "Yes, I see the studio screen showing the dashboard as I would expect." - User confirmed working
+
+### Troubleshooting Notes for Future E1 Instances
+**Issue:** "Cannot GET /" in Emergent Preview  
+**Root Cause:** Emergent Preview expects applications on port 3000, not development ports  
+**Solution:** Build for production and serve consolidated app on port 3000  
+
+**Quick Fix Command:**
+```bash
+pkill -f node && cd /app && npm run build && NODE_ENV=production node dist/server/src/index.js > server.log 2>&1 &
+```
