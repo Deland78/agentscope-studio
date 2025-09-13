@@ -38,6 +38,11 @@ def get_formatter(llmProvider: str) -> FormatterBase:
 
 def get_model(llmProvider:str, modelName: str, apiKey: str) -> ChatModelBase:
     """Get the model instance based on the input arguments."""
+    
+    # Check if using Emergent universal key
+    if apiKey and apiKey.startswith("sk-emergent"):
+        from emergent_model import get_emergent_model
+        return get_emergent_model(llmProvider, modelName, apiKey)
 
     match llmProvider.lower():
         case "dashscope":
