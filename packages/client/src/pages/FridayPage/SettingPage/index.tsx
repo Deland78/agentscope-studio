@@ -84,7 +84,7 @@ const SettingPage = () => {
     }, [llmProvider]);
 
     return (
-        <div className="flex flex-col w-full h-full pl-12 pr-12 pt-8 pb-8 gap-13">
+        <div className="flex flex-col w-full h-full pl-12 pr-12 pt-8 pb-8 gap-13 bg-white dark:bg-gray-900 overflow-y-auto">
             <div className="flex flex-col w-full gap-2">
                 <PageTitleSpan title={'Friday'} />
                 <Flex style={{ color: 'var(--muted-foreground)' }}>
